@@ -38,4 +38,21 @@ do
   source $file
 done
 
+# Node, this prob shouldn't go here
+nvm_init () {
+  export NVM_DIR=~/.nvm
+  export NVM_NODEJS_ORG_MIRROR=http://nodejs.org/dist
+  source $(brew --prefix nvm)/nvm.sh
+  nvm use default
+}
+#
+# Start the nvm with this version, uncomment to use by default
+#nvm_init
+
+# ?? why..
+export CXX=g++-4.2
+
+# Lower <ESC> delay from .4 default to .1, might mess something else up
+export KEYTIMEOUT=1
+
 unset config_files
