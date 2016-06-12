@@ -1,4 +1,5 @@
-alias reload!='. ~/.zshrc'
+# borks my rvm
+# alias reload!='. ~/.zshrc'
 
 alias serve='ruby -run -e httpd . -p 9090'
 alias brews='brew ls'
@@ -10,4 +11,4 @@ alias expose='ngrok http 3000 --subdomain=hugomelo'
 # b/c https://github.com/robbyrussell/oh-my-zsh/issues/31
 alias curl='noglob curl'
 
-  alias cls='clear' # Good 'ol Clear Screen command
+alias cls='clear' # Good 'ol Clear Screen command

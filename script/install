@@ -12,3 +12,15 @@ brew bundle
 
 # find the installers and run them iteratively
 find . -name install.sh | while read installer ; do sh -c "${installer}" ; done
+
+# install oh my zsh
+# make zsh default
+if ! [ -f which zsh ]
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  chsh -s $(which zsh)
+then
+fi
+
+# rvm, i choose you
+# curl -sSL https://get.rvm.io | bash -s stable --ruby
+gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
