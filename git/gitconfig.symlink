@@ -24,7 +24,6 @@
         branch = auto
         ui = true
 [core]
-        excludesfile = ~/.gitignore
         editor = vim
         excludesfile = /Users/hugo/.gitignore_global
 [apply]
