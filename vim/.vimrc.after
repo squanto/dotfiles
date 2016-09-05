@@ -1,0 +1,50 @@
+" Show dotfiles in nerdtree
+let NERDTreeShowHidden=1
+" solarized options
+" set termguicolors
+set t_Co=256
+" let g:solarized_termcolors = 256
+" set background=dark
+" let g:solarized_visibility = "high"
+" let g:solarized_contrast = "high"
+" colorscheme solarized
+set background=dark
+colorscheme hybrid_material
+
+" hides tilde from sidebar
+highlight NonText ctermfg=bg
+
+" RSpec.vim mappings
+" oddly enough, leader r also works...
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
+let g:rspec_command = "Dispatch ./bin/rspec {spec}"
+
+" wrap lines
+set wrap
+set linebreak
+set nolist
+set textwidth=0
+
+" go
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+let g:syntastic_quiet_messages = { "regex": ['main redeclared', 'too many errors'] }
+
+" scrolling
+set mouse=a
+
+" translate tabs to spaces
+set expandtab
+set shiftwidth=2
+set tabstop=2
+
+
+" Rust
+let g:rustfmt_autosave = 1
+let g:rust_recommended_style = 0
+
+let g:ack_use_dispatch = 1
+
