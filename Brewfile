@@ -22,19 +22,19 @@ brew 'spaceman-diff'
 brew 'unrar'
 brew 'wget'
 brew 'youtube-dl'
-cask '1password'
+# cask '1password', has to be installed for github ssh and such
 cask 'firefox'
 cask 'google-chrome'
 cask 'slack'
 cask 'transmission'
-# cask 'tunnelbear'
 brew 'vim' # for upgrading and such
+brew 'macvim' # for janus
 cask 'vlc'
 cask 'iterm2'
 brew 'gpg'
 cask 'flux'
+cask 'brave'
 
-# brew 'apple-gcc42'
 brew 'hub'
 brew 'nvm'
 brew 'tmate'
