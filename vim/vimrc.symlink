@@ -1,6 +1,7 @@
 " Enable syntax highlighting
 syntax on
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -57,25 +58,12 @@ inoremap jj <ESC>
 let mapleader = ","
 let g:mapleader = ","
 
-" highlight search
-"set hlsearch
-"nmap <leader>hl :let @/ = ""<CR>
-" ??
-" gui settings
+" iterm / tmux colors
+let g:solarized_termcolors=256
+set t_Co=16
+set background=dark
+colorscheme solarized " or desert
 
-if (&t_Co == 256 || has('gui_running'))
-  if ($TERM_PROGRAM == 'iTerm.app')
-    colorscheme solarized
-  else
-    colorscheme desert
-  endif
-endif
-
-
-" Colorscheme
-" set background=dark
-" colorscheme peaksea
-"
 
 " Disambiguate ,a & ,t from the Align plugin, making them fast again.
 "
@@ -107,3 +95,7 @@ autocmd FileType python let b:dispatch = 'python %'
 
 " F9 to run dispatch
 nnoremap <F9> :Dispatch<CR>
+
+" mouse on
+set mouse=a
+set ttym=xterm2
