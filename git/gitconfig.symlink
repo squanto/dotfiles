@@ -25,7 +25,7 @@
         ui = true
 [core]
         editor = vim
-        excludesfile = /Users/hugo/.gitignore_global
+        excludesfile = /Users/hugo/.gitignore
 [apply]
         whitespace = nowarn
 [mergetool]

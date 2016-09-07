@@ -1,4 +1,48 @@
+" Enable syntax highlighting
 syntax on
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Files, backups and undo
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" " Turn backup off, since most stuff is in SVN, git et.c anyway...
+set nobackup
+set nowb
+set noswapfile
+
+
+" Linebreak on 500 characters
+set lbr
+set tw=500
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Text, tab and indent related
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" " Use spaces instead of tabs
+set expandtab
+
+" " Be smart when using tabs ;)
+set smarttab
+"
+" 1 tab == 2 spaces
+set shiftwidth=2
+set tabstop=2
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Turn persistent undo on
+"    means that you can undo even when you close a buffer/VIM
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+try
+    set undodir=~/.vim_runtime/temp_dirs/undodir
+    set undofile
+catch
+endtry
+
+
+
+" Return to last edit position when opening files
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " Wrap gitcommit file types at the appropriate length
 filetype indent plugin on
@@ -8,18 +52,30 @@ set nocursorline " don't highlight current line
 " keyboard shortcuts
 inoremap jj <ESC>
 
+" With a map leader it's possible to do extra key combinations
+" like <leader>w saves the current file
+let mapleader = ","
+let g:mapleader = ","
+
 " highlight search
 "set hlsearch
 "nmap <leader>hl :let @/ = ""<CR>
 " ??
 " gui settings
+
 if (&t_Co == 256 || has('gui_running'))
   if ($TERM_PROGRAM == 'iTerm.app')
-    "    colorscheme solarized
+    colorscheme solarized
   else
-    "colorscheme desert
+    colorscheme desert
   endif
 endif
+
+
+" Colorscheme
+" set background=dark
+" colorscheme peaksea
+"
 
 " Disambiguate ,a & ,t from the Align plugin, making them fast again.
 "
@@ -42,3 +98,12 @@ set nofoldenable
 
 " Show dotfiles in nerdtree
 let NERDTreeShowHidden=1
+
+" rspec with \s and \t
+let g:rspec_command = "Dispatch rspec {spec}"
+
+" Python default dispatch to run current file
+autocmd FileType python let b:dispatch = 'python %'
+
+" F9 to run dispatch
+nnoremap <F9> :Dispatch<CR>
