@@ -11,6 +11,7 @@ echo "› brew bundle"
 brew bundle
 
 # find the installers and run them iteratively
+# todo: make a vim / tmux installer
 find . -name install.sh | while read installer ; do sh -c "${installer}" ; done
 
 # install oh my zsh
@@ -24,3 +25,7 @@ curl -sSL https://get.rvm.io | bash -s stable --ruby
 
 # janus(vim distro) install
 curl -L https://bit.ly/janus-bootstrap | bash
+ln -s ~/.dotfiles/vim/janus ~/.janus
+
+# tmux
+ln -s ~/.dotfiles/tmux.conf ~/.tmux.conf

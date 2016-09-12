@@ -63,6 +63,8 @@ export LANG=en_US.UTF-8
 
 bindkey -v # Vi mode
 
+bindkey "^R" history-incremental-search-backward # history search with ctrl-r
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -136,3 +138,4 @@ man() {
             man "$@"
 }
 
+alias johny-the-robot='ssh hugo@162.243.70.245'
