@@ -1,0 +1,7 @@
+--ignore-dir=log
+--ignore-file=match:.gitignore
+--ignore-file=match:jquery.js
+--ignore-file=match:jquery-ui.js
+--ignore-file=match:.powrc
+--ignore-file=match:.rvmrc
+--ignore-file=match:tags
