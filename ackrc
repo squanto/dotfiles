@@ -5,3 +5,5 @@
 --ignore-file=match:.powrc
 --ignore-file=match:.rvmrc
 --ignore-file=match:tags
+--ignore-dir=tmp
+--ignore-dir=build
