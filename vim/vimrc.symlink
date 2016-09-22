@@ -99,3 +99,7 @@ nnoremap <F9> :Dispatch<CR>
 " mouse on
 set mouse=a
 set ttym=xterm2
+
+" Trim trailing whitespace
+autocmd BufWritePre * %s/\s\+$//e
+
