@@ -84,7 +84,19 @@ source ~/.dotfiles/zsh/aliases.zsh
 source ~/.dotfiles/go/path.zsh
 
 function rspec {
-  ./bin/rspec "$@"
+  if [ ! -f ./bin/rspec ]; then
+    be rspec "$@"
+  else
+    ./bin/rspec "$@"
+  fi
+}
+
+function cucumber {
+  if [ ! -f ./bin/cucumber ]; then
+    be cucumber "$@"
+  else
+    ./bin/cucumber "$@"
+  fi
 }
 
 alias rake='./bin/rake'
