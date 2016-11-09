@@ -85,7 +85,7 @@ source ~/.dotfiles/go/path.zsh
 
 function rspec {
   if [ ! -f ./bin/rspec ]; then
-    be rspec "$@"
+    bundle exec rspec "$@"
   else
     ./bin/rspec "$@"
   fi
@@ -93,9 +93,17 @@ function rspec {
 
 function cucumber {
   if [ ! -f ./bin/cucumber ]; then
-    be cucumber "$@"
+    bundle exec cucumber "$@"
   else
     ./bin/cucumber "$@"
+  fi
+}
+
+function rails {
+  if [ ! -f ./bin/rails ]; then
+    bundle exec rails "$@"
+  else
+    ./bin/rails "$@"
   fi
 }
 
