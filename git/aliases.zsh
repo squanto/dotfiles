@@ -25,6 +25,6 @@ alias gac='git add -A && git commit -m'
   ci = commit
   st = status
   br = branch
-  hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+  hist = log --graph --pretty=format:'%Cred%h%Creset %ad -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=short
   type = cat-file -t
   dump = cat-file -p
