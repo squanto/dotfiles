@@ -4,3 +4,4 @@
 .env
 docs/tags
 tags
+Tmuxfile
