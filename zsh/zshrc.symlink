@@ -107,7 +107,14 @@ function rails {
   fi
 }
 
-alias rake='./bin/rake'
+function rake {
+  if [ ! -f ./bin/rake ]; then
+    bundle exec rake "$@"
+  else
+    ./bin/rake "$@"
+  fi
+}
+
 alias dockerize='eval $(docker-machine env default)'
 alias gpg='gpg2'
 alias pgpg='psql -h localhost -U postgres' # psql -h localhost -U hugo -d brainstream_development
@@ -159,3 +166,7 @@ man() {
 }
 
 alias johny-the-robot='ssh hugo@162.243.70.245'
+
+# Load nvm on new tab
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"

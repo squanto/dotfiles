@@ -44,3 +44,4 @@ brew 'postgresql'
 
 tap 'joshuaclayton/formulae'
 brew 'unused'
+brew 'diff-so-fancy'
