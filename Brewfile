@@ -19,6 +19,7 @@ brew 'postgresql'
 brew 'ruby-build'
 brew 'roundup'
 brew 'spaceman-diff'
+brew 'ffmpeg' # convert all the vids and audio
 brew 'unrar'
 brew 'wget'
 brew 'youtube-dl'
