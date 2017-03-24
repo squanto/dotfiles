@@ -178,3 +178,13 @@ export NVM_DIR="$HOME/.nvm"
 # Just running that command will connect to your server and attach to an existing tmux session, or create a new one if needed, and make use of iTerm's tmux integration, so you can use the standard macOS keyboard commands (or the UI) to do things like switch tabs, make new tabs, close them, make new windows, etc. all using tmux and a single ssh connection. You can press 'esc' in the command window to detach from your session and when you return (just using that alias) all your work is just as you
 # left it.
 # ssh [your server] -t "tmux -CC attach || tmux -CC"
+
+
+# b/c https://github.com/robbyrussell/oh-my-zsh/issues/31
+alias curl='noglob curl'
+
+
+alias brews='brew ls'
+alias be='bundle exec'
+
+alias serve='ruby -run -e httpd . -p 9090'
