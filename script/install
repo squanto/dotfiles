@@ -6,20 +6,27 @@ set -e
 
 cd "$(dirname $0)"/..
 
+# Install Homebrew when it's not installed
+if test ! $(which brew)
+then
+  echo ">  Installing Homebrew for you."
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
+
 # Run Homebrew through the Brewfile
 echo "› brew bundle"
 brew bundle
 
 # find the installers and run them iteratively
-# todo: make a vim / tmux installer
 find . -name install.sh | while read installer ; do sh -c "${installer}" ; done
 
-# install oh my zsh
-# make zsh default
+# Install oh my zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+# Make zsh default
 chsh -s $(which zsh)
 
-# rvm, i choose you
+
+# Install rvm
 gpg2 --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 curl -sSL https://get.rvm.io | bash -s stable --ruby
 
