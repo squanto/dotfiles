@@ -9,15 +9,14 @@
         protocol = https
 [alias]
         co = checkout
-        count = !git shortlog -sn
         ci = commit
         st = status
         br = branch
-        hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+        # hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+  	hist = log --graph --pretty=format:'%Cred%h%Creset %ad -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=short
         type = cat-file -t
         dump = cat-file -p
         ctags = !.git/hooks/ctags
-
 [color]
         diff = auto
         status = auto
@@ -47,6 +46,3 @@
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
-
-[gui]
-	recentrepo = /Users/hugo/Developer/freshly
