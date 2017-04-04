@@ -25,3 +25,18 @@ defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
 
 # Disables itunes open on headphones button
 launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist
+
+# Disable the crash reporter
+defaults write com.apple.CrashReporter DialogType -string "none"
+
+# Disable Notification Center and remove the menu bar icon
+launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
+
+# Finder: show status bar
+defaults write com.apple.finder ShowStatusBar -bool true
+
+# Disable Dashboard
+defaults write com.apple.dashboard mcx-disabled -bool true
+
+# Don’t display the annoying prompt when quitting iTerm
+defaults write com.googlecode.iterm2 PromptOnQuit -bool false
