@@ -40,3 +40,6 @@ defaults write com.apple.dashboard mcx-disabled -bool true
 
 # Don’t display the annoying prompt when quitting iTerm
 defaults write com.googlecode.iterm2 PromptOnQuit -bool false
+
+# Show hidden files in finder
+defaults write com.apple.finder AppleShowAllFiles YES
