@@ -18,17 +18,17 @@ echo "› brew bundle"
 brew bundle
 
 # find the installers and run them iteratively
-find . -name install.sh | while read installer ; do sh -c "${installer}" ; done
+# find . -name install.sh | while read installer ; do sh -c "${installer}" ; done
 
 # Install oh my zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+# sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 # Make zsh default
-chsh -s $(which zsh)
+# chsh -s $(which zsh)
 
 
 # Install rvm
 gpg2 --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-curl -sSL https://get.rvm.io | bash -s stable --ruby
+curl -sSL https://rvm.io/mpapis.asc | gpg2 --import -
 
 # janus(vim distro) install
 curl -L https://bit.ly/janus-bootstrap | bash
