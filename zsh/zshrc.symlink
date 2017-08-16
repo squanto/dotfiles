@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/hugo/.oh-my-zsh
+export ZSH=/Users/hugomelo/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -80,12 +80,12 @@ bindkey "^R" history-incremental-search-backward # history search with ctrl-r
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 export PATH="/usr/local/bin:$PATH"
 export PATH="~/Developer/go/bin:$PATH"
-source ~/.dotfiles/zsh/aliases.zsh
+source ~/.dotfiles/zsh/completion.zsh
 source ~/.dotfiles/go/path.zsh
 
 
 # add rust things to path
-export PATH="/Users/hugo/.cargo/bin:$PATH"
+export PATH="~/.cargo/bin:$PATH"
 
 function rspec {
 if [ ! -f ./bin/rspec ]; then
@@ -119,8 +119,6 @@ else
 fi
 }
 
-alias dockerize='eval $(docker-machine env default)'
-alias gpg='gpg2'
 alias pgpg='psql -h localhost -U postgres' # psql -h localhost -U hugo -d brainstream_development
 alias rust-update='curl -sf -L https://static.rust-lang.org/rustup.sh | sh'
 

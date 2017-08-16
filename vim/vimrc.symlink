@@ -60,9 +60,12 @@ let g:mapleader = ","
 
 " iterm / tmux colors
 let g:solarized_termcolors=256
-set t_Co=16
+"set t_Co=16
+"colorscheme solarized " or desert
+
+" Solarized stuff
 set background=dark
-colorscheme solarized " or desert
+colorscheme solarized
 
 
 " Disambiguate ,a & ,t from the Align plugin, making them fast again.

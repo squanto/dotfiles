@@ -1,6 +1,6 @@
 The MIT License
 
-Copyright (c) Hugo Melo, http://hugomelo.com
+Copyright (c) Hugo Melo, hugomelo.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

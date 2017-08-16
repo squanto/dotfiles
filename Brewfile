@@ -42,7 +42,3 @@ brew 'nvm'
 brew 'tmux'
 brew 'reattach-to-user-namespace'
 brew 'postgresql'
-
-tap 'joshuaclayton/formulae'
-brew 'unused'
-brew 'diff-so-fancy'
