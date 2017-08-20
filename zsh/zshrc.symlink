@@ -167,8 +167,6 @@ man() {
           man "$@"
 }
 
-alias johny-the-robot='ssh hugo@162.243.70.245'
-
 # Load nvm on new tab
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
@@ -186,3 +184,5 @@ alias brews='brew ls'
 alias be='bundle exec'
 
 alias serve='ruby -run -e httpd . -p 9090'
+
+alias dokku='ssh dokku@50.1.126.116'

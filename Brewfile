@@ -35,6 +35,7 @@ cask 'transmission'
 cask 'iterm2'
 cask 'brave'
 cask 'spotify'
+cask 'gitter'
 
 brew 'tmate'
 brew 'hub'
