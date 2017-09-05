@@ -92,35 +92,44 @@ source ~/.dotfiles/go/path.zsh
 export PATH="~/.cargo/bin:$PATH"
 
 function rspec {
-if [ ! -f ./bin/rspec ]; then
-  bundle exec rspec "$@"
-else
-  ./bin/rspec "$@"
-fi
+  if [ ! -f ./bin/rspec ]; then
+    bundle exec rspec "$@"
+  else
+    ./bin/rspec "$@"
+  fi
 }
 
 function cucumber {
-if [ ! -f ./bin/cucumber ]; then
-  bundle exec cucumber "$@"
-else
-  ./bin/cucumber "$@"
-fi
+  if [ ! -f ./bin/cucumber ]; then
+    bundle exec cucumber "$@"
+  else
+    ./bin/cucumber "$@"
+  fi
 }
 
+# TODO: this some silliness
 function rails {
-if [ ! -f ./bin/rails ]; then
-  bundle exec rails "$@"
-else
-  ./bin/rails "$@"
-fi
+  if [ ! -f ./bin/rails ]; then
+    # since rails (`rails new`) runs without a bundler, make it optional
+    if [ ! -f Gemfile ]; then
+      # no gemfile, get rails bin
+      $GEM_HOME/bin/rails "$@"
+    else
+      # gemfile, use that one
+      bundle exec rails "$@"
+    fi
+  else
+    # use spring rails
+    ./bin/rails "$@"
+  fi
 }
 
 function rake {
-if [ ! -f ./bin/rake ]; then
-  bundle exec rake "$@"
-else
-  ./bin/rake "$@"
-fi
+  if [ ! -f ./bin/rake ]; then
+    bundle exec rake "$@"
+  else
+    ./bin/rake "$@"
+  fi
 }
 
 alias pgpg='psql -h localhost -U postgres' # psql -h localhost -U hugo -d brainstream_development
