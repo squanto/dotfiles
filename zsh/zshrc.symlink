@@ -55,6 +55,10 @@ plugins=(git zsh-iterm-touchbar)
 
 export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:$PATH"
 
+# Some homebrew things need this
+export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
