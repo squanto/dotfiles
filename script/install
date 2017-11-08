@@ -2,6 +2,12 @@
 #
 # Run all dotfiles installers.
 
+# disable system startup sound
+# note: to re-enable it, `sudo nvram –d SystemAudioVolume`
+echo 'turning off system startup chime :)'
+sudo nvram SystemAudioVolume=%80
+
+
 set -e
 
 cd "$(dirname $0)"/..

@@ -199,3 +199,17 @@ alias be='bundle exec'
 alias serve='ruby -run -e httpd . -p 9090'
 
 alias dokku='ssh dokku@50.1.126.116'
+
+most_used_commands () {
+  history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head -20
+}
+
+alias what_is_my_ip="ip addr show eno1 | grep inet | awk '{ print $2; }' | sed 's/\/.*$//'"
+
+export TEST_DATA_DIR=/Users/hugomelo/Developer/my_test_net/datadir
+# test net Address: {7530df3fc2ab2f706e3b8df51035f739877b54af}
+
+# for exercism autocomplete
+if [ -f ~/.config/exercism/exercism_completion.zsh ]; then
+  . ~/.config/exercism/exercism_completion.zsh
+fi
