@@ -213,3 +213,8 @@ export TEST_DATA_DIR=/Users/hugomelo/Developer/my_test_net/datadir
 if [ -f ~/.config/exercism/exercism_completion.zsh ]; then
   . ~/.config/exercism/exercism_completion.zsh
 fi
+
+if [ -f ~/.zshrc.local ]; then
+  source ~/.zshrc.local
+fi
+
