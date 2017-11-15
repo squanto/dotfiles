@@ -218,3 +218,8 @@ if [ -f ~/.zshrc.local ]; then
   source ~/.zshrc.local
 fi
 
+# pyhton virtualenv setup
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+
+# b/c 2.7 is default + worse
+alias python='python3'
