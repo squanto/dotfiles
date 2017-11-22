@@ -7,3 +7,4 @@ tags
 Tmuxfile
 bin/prodc
 vim/janus/vim-wakatime
+node_modules/

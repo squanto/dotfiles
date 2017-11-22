@@ -13,7 +13,7 @@
         st = status
         br = branch
         # hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
-  	hist = log --graph --pretty=format:'%Cred%h%Creset %ad -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=short
+  	    hist = log --graph --pretty=format:'%Cred%h%Creset %ad -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=short
         type = cat-file -t
         dump = cat-file -p
         ctags = !.git/hooks/ctags
@@ -24,8 +24,8 @@
         ui = true
 [core]
         editor = vim
-        excludesfile = /Users/hugo/.gitignore
         pager = diff-so-fancy | less
+	      excludefile = /Users/hugomelo/.gitignore
 
 [apply]
         whitespace = nowarn

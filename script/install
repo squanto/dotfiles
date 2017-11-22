@@ -52,3 +52,6 @@ ln -s ~/.dotfiles/vimrc.symlink ~/.vimrc.after
 
 # tmux
 ln -s ~/.dotfiles/tmux.conf ~/.tmux.conf
+
+# set git ignore file with username (that changes)
+USERNAME=$(whoami) git config --global core.excludefile /Users/$USERNAME/.gitignore
