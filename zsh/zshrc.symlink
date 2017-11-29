@@ -197,6 +197,7 @@ alias brews='brew ls'
 alias be='bundle exec'
 
 alias serve='ruby -run -e httpd . -p 9090'
+# alias serve='python -m http.server 9090'
 
 alias dokku='ssh dokku@50.1.126.116'
 
@@ -222,4 +223,10 @@ fi
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 
 # b/c 2.7 is default + worse
-alias python='python3'
+# alias python='python3'
+
+# use the same geth as mist
+if [ -f /Users/hugomelo/Library/Application\ Support/Mist/binaries/Geth/unpacked/geth ]; then
+  alias geth='/Users/hugomelo/Library/Application\ Support/Mist/binaries/Geth/unpacked/geth'
+fi
+
