@@ -1,57 +1,12 @@
 #!/usr/bin/env bash
-#
-# Run all dotfiles installers.
 
-# disable system startup sound
-# note: to re-enable it, `sudo nvram –d SystemAudioVolume`
-echo 'turning off system startup chime :)'
-sudo nvram SystemAudioVolume=%80
-
-
+# exit immediately if anything returns non-zero exit code
 set -e
 
-cd "$(dirname $0)"/..
-
-# Install Homebrew when it's not installed
-if test ! $(which brew)
-then
-  echo ">  Installing Homebrew for you."
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+if hash apt-get 2>/dev/null; then
+  sudo apt-get update
 fi
 
-# Run Homebrew through the Brewfile
-echo "› brew bundle"
-brew bundle
-
-# find the installers and run them iteratively
+# Run all dotfiles installers.
+cd "$(dirname $0)"/..
 find . -name install.sh | while read installer ; do sh -c "${installer}" ; done
-
-# Install oh my zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-# Make zsh default
-chsh -s $(which zsh)
-
-# Install rvm keys
-gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
-curl -sSL https://rvm.io/mpapis.asc | gpg2 --import -
-
-# install rvm with latest ruby
-curl -sSL https://get.rvm.io | bash -s stable --ruby
-
-source ~/.zshrc # reload
-# turn off warnings for gemfiles
-rvm rvmrc warning ignore allGemfiles
-
-# install bundler + rails
-gem install bundler
-gem install rails
-
-# janus(vim distro) install
-curl -L https://bit.ly/janus-bootstrap | bash
-ln -s ~/.dotfiles/vimrc.symlink ~/.vimrc.after
-
-# tmux
-ln -s ~/.dotfiles/tmux.conf ~/.tmux.conf
-
-# set git ignore file with username (that changes)
-USERNAME=$(whoami) git config --global core.excludefile /Users/$USERNAME/.gitignore

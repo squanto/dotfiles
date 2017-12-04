@@ -40,7 +40,6 @@ cask 'gitter'
 
 brew 'tmate'
 brew 'hub'
-brew 'nvm'
 brew 'tmux'
 brew 'reattach-to-user-namespace'
 brew 'postgresql'
