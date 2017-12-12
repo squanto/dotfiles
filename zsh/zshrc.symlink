@@ -1,5 +1,6 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/hugomelo/.oh-my-zsh
+# todo: change to home or users (osx)
+export ZSH=/home/hugo/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -229,4 +230,3 @@ export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 if [ -f /Users/hugomelo/Library/Application\ Support/Mist/binaries/Geth/unpacked/geth ]; then
   alias geth='/Users/hugomelo/Library/Application\ Support/Mist/binaries/Geth/unpacked/geth'
 fi
-

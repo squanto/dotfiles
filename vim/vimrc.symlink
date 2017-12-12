@@ -22,7 +22,7 @@ set tw=500
 " " Use spaces instead of tabs
 set expandtab
 
-" " Be smart when using tabs ;)
+" " Be smart when using tabs
 set smarttab
 "
 " 1 tab == 2 spaces
@@ -101,8 +101,22 @@ nnoremap <F9> :Dispatch<CR>
 
 " mouse on
 set mouse=a
-set ttym=xterm2
+set ttymouse=xterm2
 
 " Trim trailing whitespace
 autocmd BufWritePre * %s/\s\+$//e
 
+
+" languages n such
+" python
+au BufNewFile,BufRead *.py
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+    \ set textwidth=79
+    \ set expandtab
+    \ set autoindent
+    \ set fileformat=unix
+
+" flag unnecessary whitespace in python
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
