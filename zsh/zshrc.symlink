@@ -230,3 +230,4 @@ export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 if [ -f /Users/hugomelo/Library/Application\ Support/Mist/binaries/Geth/unpacked/geth ]; then
   alias geth='/Users/hugomelo/Library/Application\ Support/Mist/binaries/Geth/unpacked/geth'
 fi
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

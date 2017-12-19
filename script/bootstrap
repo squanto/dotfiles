@@ -152,5 +152,8 @@ then
   fi
 fi
 
+npm install -g diff-so-fancy
+
 echo ''
 echo '  All installed!'
+
