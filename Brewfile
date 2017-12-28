@@ -17,6 +17,8 @@ brew 'openssl'
 brew 'node'
 brew 'readline'
 brew 'postgresql'
+brew 'redis'
+brew 'r'
 brew 'roundup'
 brew 'spaceman-diff'
 brew 'ffmpeg' # convert all the vids and audio
@@ -26,10 +28,10 @@ brew 'youtube-dl'
 cask 'firefox'
 brew 'vim' # for upgrading and such
 brew 'macvim' # for janus
-cask 'vlc'
 brew 'gpg'
+
 cask 'flux'
-# cask '1password', has to be installed for github ssh and such
+cask 'vlc'
 cask 'google-chrome'
 cask 'slack'
 cask 'transmission'
@@ -37,6 +39,8 @@ cask 'iterm2'
 cask 'brave'
 cask 'spotify'
 cask 'gitter'
+cask 'alfred'
+# cask '1password', has to be installed for github ssh and such
 
 brew 'tmate'
 brew 'hub'
