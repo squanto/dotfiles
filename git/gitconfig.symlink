@@ -25,7 +25,8 @@
 [core]
         editor = vim
         pager = diff-so-fancy | less
-	excludefile = /Users/hugo/.gitignore
+	      excludefile = /Users/hugo/.gitignore
+	excludesfile = /Users/hugo/.gitignore
 
 [apply]
         whitespace = nowarn

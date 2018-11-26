@@ -8,3 +8,6 @@ Tmuxfile
 bin/prodc
 vim/janus/vim-wakatime
 node_modules/
+docs/
+prop_venv/
+.vscode/

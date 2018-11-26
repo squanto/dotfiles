@@ -48,3 +48,5 @@ brew 'tmux'
 brew 'reattach-to-user-namespace'
 brew 'postgresql'
 brew 'gotags'
+brew 'tree'
+

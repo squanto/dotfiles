@@ -152,7 +152,9 @@ then
   fi
 fi
 
+echo "Installing a couple little node packages"
 npm install -g diff-so-fancy
+npm install -g eslint
 
 echo ''
 echo '  All installed!'
