@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
-# janus(vim distro) install
+echo "Installing janus for vim"
 curl -L https://bit.ly/janus-bootstrap | bash
-ln -s ~/.dotfiles/vimrc.symlink ~/.vimrc.after
+
+# link
+ln -s ~/.dotfiles/vimrc.after.symlink ~/.vimrc.after

@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 
-# The Brewfile handles Homebrew-based app and library installs, but there may
-# still be updates and installables in the Mac App Store. There's a nifty
-# command line interface to it that we can use to just install everything, so
-# yeah, let's do that.
+echo "Setting several OSX-specific defaults"
 
 if [ "$(uname -s)" == "Darwin" ]; then
   echo "› sudo softwareupdate -i -a"
@@ -47,6 +44,7 @@ if [ "$(uname -s)" == "Darwin" ]; then
 
   # Show hidden files in finder
   defaults write com.apple.finder AppleShowAllFiles YES
+  killall Finder /System/Library/CoreServices/Finder.app
 
   # Auto hide the dock
   osascript -e "tell application \"System Events\" to set the autohide of the dock preferences to true"
@@ -54,16 +52,5 @@ if [ "$(uname -s)" == "Darwin" ]; then
 	# disable system startup sound
 	echo 'turning off system startup chime :)' # note: to re-enable it, `sudo nvram –d SystemAudioVolume`
 	sudo nvram SystemAudioVolume=%80
-
-	# Install Homebrew when it's not installed
-	if test ! $(which brew)
-	then
-		echo ">  Installing Homebrew for you."
-		ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-	fi
-
-	# Run Homebrew through the Brewfile
-	echo "› brew bundle"
-	brew bundle
 fi
 

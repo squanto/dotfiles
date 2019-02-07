@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# exit immediately if anything returns non-zero exit code
+set -e
+
+# update on linux
+if hash apt-get 2>/dev/null; then
+    sudo apt-get update
+fi
+
+# Install Homebrew when it's not installed
+if test ! $(which brew)
+then
+    echo ">  Installing Homebrew for you."
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
+
+# Install from Brewfile
+brew bundle
+
+
+# Run all dotfiles installers.
+find . -name install.sh | while read installer ; do sh -c "${installer}" ; done

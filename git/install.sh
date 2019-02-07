@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+echo "Setting up git"
 # back up stuff
 if [ -f ~/.gitconfig ]; then
 	mv ~/.gitconfig ~/.gitconfig.backup
@@ -8,7 +9,7 @@ if [ -f ~/.gitignore ]; then
 	mv ~/.gitignore ~/.gitignore.backup
 fi
 
-# link goodies
+# link
 ln -s ~/.dotfiles/git/gitconfig.symlink ~/.gitconfig
 ln -s ~/.dotfiles/git/gitignore.symlink ~/.gitignore
 

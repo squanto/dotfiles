@@ -1,50 +1,17 @@
 # Path to your oh-my-zsh installation.
-# todo: change to home or users (osx)
-export ZSH=/home/hugo/.oh-my-zsh
+if [ "$(uname -s)" == "Darwin" ];
+then
+  export ZSH=/Users/hugo/.oh-my-zsh # on osx
+else
+	export ZSH=/home/hugo/.oh-my-zsh # on ubuntu
+fi
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
+# Themes from ~/.oh-my-zsh/themes/
 ZSH_THEME="awesomepanda"
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+# check for updates weekly
+export UPDATE_ZSH_DAYS=7
 
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -58,40 +25,98 @@ export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:$PATH"
 
 # Some homebrew things need this
 export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
-bindkey -v # Vi mode
 
-bindkey "^R" history-incremental-search-backward # history search with ctrl-r
+# Config
+if [[ -n $SSH_CONNECTION ]]; then
+  export PS1='%m:%3~$(git_info_for_prompt)%# '
+else
+  export PS1='%3~$(git_info_for_prompt)%# '
+fi
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+export LSCOLORS="exfxcxdxbxegedabagacad"
+export CLICOLOR=true
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
+fpath=($ZSH/functions $fpath)
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-export PATH="/usr/local/bin:$PATH"
-export PATH="~/Developer/go/bin:$PATH"
-source ~/.dotfiles/zsh/completion.zsh
-source ~/.dotfiles/go/path.zsh
+autoload -U $ZSH/functions/*(:t)
+
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+
+setopt NO_BG_NICE # don't nice background tasks
+setopt NO_HUP
+setopt NO_LIST_BEEP
+setopt LOCAL_OPTIONS # allow functions to have local options
+setopt LOCAL_TRAPS # allow functions to have local traps
+setopt HIST_VERIFY
+setopt SHARE_HISTORY # share history between sessions ???
+setopt EXTENDED_HISTORY # add timestamps to history
+setopt PROMPT_SUBST
+setopt CORRECT
+setopt COMPLETE_IN_WORD
+setopt IGNORE_EOF
+
+setopt APPEND_HISTORY # adds history
+setopt INC_APPEND_HISTORY SHARE_HISTORY  # adds history incrementally and share it across sessions
+setopt HIST_IGNORE_ALL_DUPS  # don't record dupes in history
+setopt HIST_REDUCE_BLANKS
+
+# don't expand aliases _before_ completion has finished
+#   like: git comm-[tab]
+setopt complete_aliases
+
+zle -N newtab # ??
+
+# Vim mode instead of emacs
+bindkey -v
+
+# control-r for search
+bindkey '^R' history-incremental-search-backward
 
 
-# add rust things to path
-export PATH="~/.cargo/bin:$PATH"
 
+# Completion
+# matches case insensitive for lowercase
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+# pasting with tabs doesn't perform completion
+zstyle ':completion:*' insert-tab pending
+
+
+
+export EDITOR=vim
+
+# Colorizes man pages
+man() {
+  env \
+      LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+      LESS_TERMCAP_md=$(printf "\e[1;31m") \
+      LESS_TERMCAP_me=$(printf "\e[0m") \
+      LESS_TERMCAP_se=$(printf "\e[0m") \
+      LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+      LESS_TERMCAP_ue=$(printf "\e[0m") \
+      LESS_TERMCAP_us=$(printf "\e[1;32m") \
+          man "$@"
+}
+
+
+# node
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+# This loads nvm bash_completion
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+
+# Functions
 function rspec {
   if [ ! -f ./bin/rspec ]; then
     bundle exec rspec "$@"
@@ -99,7 +124,6 @@ function rspec {
     ./bin/rspec "$@"
   fi
 }
-
 function cucumber {
   if [ ! -f ./bin/cucumber ]; then
     bundle exec cucumber "$@"
@@ -107,8 +131,6 @@ function cucumber {
     ./bin/cucumber "$@"
   fi
 }
-
-# TODO: this some silliness
 function rails {
   if [ ! -f ./bin/rails ]; then
     # since rails (`rails new`) runs without a bundler, make it optional
@@ -124,7 +146,6 @@ function rails {
     ./bin/rails "$@"
   fi
 }
-
 function rake {
   if [ ! -f ./bin/rake ]; then
     bundle exec rake "$@"
@@ -132,102 +153,17 @@ function rake {
     ./bin/rake "$@"
   fi
 }
-
-alias pgpg='psql -h localhost -U postgres' # psql -h localhost -U hugo -d brainstream_development
-alias rust-update='curl -sf -L https://static.rust-lang.org/rustup.sh | sh'
-
-export EDITOR=vim
-
-function rusty {
-rustc $1
-NEW_BINARY=$(echo $1 | sed s/.rs//)
-eval "./$NEW_BINARY"
-rm "./$NEW_BINARY"
-}
-
 # removes file from git history
 function git-remove {
   git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch $1' --prune-empty --tag-name-filter cat -- --all
 }
 
-# remove all the docker things
-function docker-rm-all {
-if [ "$(docker ps -aq)" -eq "" ]; then
-  echo "No Containers"
-else
-  docker kill $(docker ps -aq)
-  docker rm $(docker ps -aq)
-fi
 
-if [ "$(docker images -aq)" -eq "" ]; then
-  echo "No Images"
-else
-  docker rmi -f $(docker images -aq)
-fi
-}
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
-# Colorizes man pages
-man() {
-  env \
-      LESS_TERMCAP_mb=$(printf "\e[1;31m") \
-      LESS_TERMCAP_md=$(printf "\e[1;31m") \
-      LESS_TERMCAP_me=$(printf "\e[0m") \
-      LESS_TERMCAP_se=$(printf "\e[0m") \
-      LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
-      LESS_TERMCAP_ue=$(printf "\e[0m") \
-      LESS_TERMCAP_us=$(printf "\e[1;32m") \
-          man "$@"
-}
-
-# Load nvm on new tab
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-
-# Just running that command will connect to your server and attach to an existing tmux session, or create a new one if needed, and make use of iTerm's tmux integration, so you can use the standard macOS keyboard commands (or the UI) to do things like switch tabs, make new tabs, close them, make new windows, etc. all using tmux and a single ssh connection. You can press 'esc' in the command window to detach from your session and when you return (just using that alias) all your work is just as you
-# left it.
-# ssh [your server] -t "tmux -CC attach || tmux -CC"
-
-
-# b/c https://github.com/robbyrussell/oh-my-zsh/issues/31
-alias curl='noglob curl'
-
-
+# Aliases
 alias brews='brew ls'
 alias be='bundle exec'
-
 alias serve='ruby -run -e httpd . -p 9090'
-# alias serve='python -m http.server 9090'
-
-alias dokku='ssh dokku@50.1.126.116'
-
-most_used_commands () {
-  history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head -20
-}
-
 alias what_is_my_ip="ip addr show eno1 | grep inet | awk '{ print $2; }' | sed 's/\/.*$//'"
-
-export TEST_DATA_DIR=/Users/hugomelo/Developer/my_test_net/datadir
-# test net Address: {7530df3fc2ab2f706e3b8df51035f739877b54af}
-
-# for exercism autocomplete
-if [ -f ~/.config/exercism/exercism_completion.zsh ]; then
-  . ~/.config/exercism/exercism_completion.zsh
-fi
-
-if [ -f ~/.zshrc.local ]; then
-  source ~/.zshrc.local
-fi
-
-# pyhton virtualenv setup
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
-
-# b/c 2.7 is default + worse
-# alias python='python3'
-
-# use the same geth as mist
-if [ -f /Users/hugomelo/Library/Application\ Support/Mist/binaries/Geth/unpacked/geth ]; then
-  alias geth='/Users/hugomelo/Library/Application\ Support/Mist/binaries/Geth/unpacked/geth'
-fi
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+alias pgpg='psql -h localhost -U postgres' # psql -h localhost -U hugo -d myapp_development
+# b/c https://github.com/robbyrussell/oh-my-zsh/issues/31
+alias curl='noglob curl'

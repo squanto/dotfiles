@@ -5,5 +5,7 @@ if [ -n "$ZSH_VERSION" ]; then
 elif [ -n "$BASH_VERSION" ]; then
 	echo "Installing zsh"
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+	echo "Setting zsh as default"
+	chsh -s /bin/zsh
 fi
-echo "run: \n\n\t chsh -s $(which zsh) \n\n to set zsh as default shell"
