@@ -24,7 +24,7 @@
         ui = true
 [core]
         editor = vim
-        pager = diff-so-fancy | less
+        pager = less
 	      excludefile = /Users/hugo/.gitignore
 	excludesfile = /Users/hugo/.gitignore
 
