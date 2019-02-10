@@ -21,6 +21,6 @@ else
 fi
 
 # link
-ln -s ~/.dotfiles/ruby/gemrc.symlink ~/.gemrc.symlink
-ln -s ~/.dotfiles/ruby/irbrc.symlink ~/.irbrc.symlink
-ln -s ~/.dotfiles/ruby/rspec.symlink ~/.rspec.symlink
+ln -s ~/.dotfiles/ruby/gemrc.symlink ~/.gemrc
+ln -s ~/.dotfiles/ruby/irbrc.symlink ~/.irbrc
+ln -s ~/.dotfiles/ruby/rspec.symlink ~/.rspec
