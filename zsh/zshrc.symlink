@@ -1,99 +1,41 @@
 # Path to your oh-my-zsh installation.
-if [ "$(uname -s)" == "Darwin" ];
-then
-  export ZSH=/Users/hugo/.oh-my-zsh # on osx
-else
-	export ZSH=/home/hugo/.oh-my-zsh # on ubuntu
-fi
+export ZSH=~/.oh-my-zsh
 
-# Themes from ~/.oh-my-zsh/themes/
+# Themes (from ~/.oh-my-zsh/themes/)
 ZSH_THEME="awesomepanda"
 
 # check for updates weekly
 export UPDATE_ZSH_DAYS=7
 
-
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
 plugins=(git zsh-iterm-touchbar)
 
-# User configuration
+# bring in goodies
+source $ZSH/oh-my-zsh.sh
 
+# Paths
 export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:$PATH"
-
-# Some homebrew things need this
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
-source $ZSH/oh-my-zsh.sh
-
-# You may need to manually set your language environment
+# Manually sets language environment
 export LANG=en_US.UTF-8
 
-
-# Config
-if [[ -n $SSH_CONNECTION ]]; then
-  export PS1='%m:%3~$(git_info_for_prompt)%# '
-else
-  export PS1='%3~$(git_info_for_prompt)%# '
-fi
-
-export LSCOLORS="exfxcxdxbxegedabagacad"
-export CLICOLOR=true
-
-fpath=($ZSH/functions $fpath)
-
-autoload -U $ZSH/functions/*(:t)
-
-HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
-
-setopt NO_BG_NICE # don't nice background tasks
-setopt NO_HUP
-setopt NO_LIST_BEEP
-setopt LOCAL_OPTIONS # allow functions to have local options
-setopt LOCAL_TRAPS # allow functions to have local traps
-setopt HIST_VERIFY
-setopt SHARE_HISTORY # share history between sessions ???
-setopt EXTENDED_HISTORY # add timestamps to history
-setopt PROMPT_SUBST
-setopt CORRECT
-setopt COMPLETE_IN_WORD
-setopt IGNORE_EOF
-
-setopt APPEND_HISTORY # adds history
-setopt INC_APPEND_HISTORY SHARE_HISTORY  # adds history incrementally and share it across sessions
-setopt HIST_IGNORE_ALL_DUPS  # don't record dupes in history
-setopt HIST_REDUCE_BLANKS
-
-# don't expand aliases _before_ completion has finished
-#   like: git comm-[tab]
-setopt complete_aliases
-
-zle -N newtab # ??
-
-# Vim mode instead of emacs
+# Vim mode instead of emacs default
 bindkey -v
+# Open vim in verbose git commit messages
+export EDITOR=vim
 
 # control-r for search
 bindkey '^R' history-incremental-search-backward
-
-
 
 # Completion
 # matches case insensitive for lowercase
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 # pasting with tabs doesn't perform completion
 zstyle ':completion:*' insert-tab pending
-
-
-
-export EDITOR=vim
 
 # Colorizes man pages
 man() {
@@ -106,56 +48,6 @@ man() {
       LESS_TERMCAP_ue=$(printf "\e[0m") \
       LESS_TERMCAP_us=$(printf "\e[1;32m") \
           man "$@"
-}
-
-
-# node
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-# This loads nvm bash_completion
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-
-
-# Functions
-function rspec {
-  if [ ! -f ./bin/rspec ]; then
-    bundle exec rspec "$@"
-  else
-    ./bin/rspec "$@"
-  fi
-}
-function cucumber {
-  if [ ! -f ./bin/cucumber ]; then
-    bundle exec cucumber "$@"
-  else
-    ./bin/cucumber "$@"
-  fi
-}
-function rails {
-  if [ ! -f ./bin/rails ]; then
-    # since rails (`rails new`) runs without a bundler, make it optional
-    if [ ! -f Gemfile ]; then
-      # no gemfile, get rails bin
-      $GEM_HOME/bin/rails "$@"
-    else
-      # gemfile, use that one
-      bundle exec rails "$@"
-    fi
-  else
-    # use spring rails
-    ./bin/rails "$@"
-  fi
-}
-function rake {
-  if [ ! -f ./bin/rake ]; then
-    bundle exec rake "$@"
-  else
-    ./bin/rake "$@"
-  fi
-}
-# removes file from git history
-function git-remove {
-  git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch $1' --prune-empty --tag-name-filter cat -- --all
 }
 
 
