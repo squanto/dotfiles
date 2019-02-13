@@ -1,3 +1,4 @@
+--color
 --format=documentation
 --order=random
 --seed <%= srand % 0xFFFF unless ARGV.any? { |arg| arg =~ /seed/ } %>
