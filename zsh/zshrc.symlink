@@ -50,7 +50,6 @@ man() {
           man "$@"
 }
 
-
 # Aliases
 alias brews='brew ls'
 alias be='bundle exec'
@@ -59,3 +58,5 @@ alias what_is_my_ip="ip addr show eno1 | grep inet | awk '{ print $2; }' | sed '
 alias pgpg='psql -h localhost -U postgres' # psql -h localhost -U hugo -d myapp_development
 # b/c https://github.com/robbyrussell/oh-my-zsh/issues/31
 alias curl='noglob curl'
+alias todo='vim ~/Dropbox/todo/'
+

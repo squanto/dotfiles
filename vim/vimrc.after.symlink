@@ -42,7 +42,6 @@ let g:mapleader = ","
 "" Colors
 " Enable syntax highlighting
 syntax on
-"set background=dark
 color molokai
 
 " hides tilde from sidebar
