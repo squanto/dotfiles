@@ -11,3 +11,4 @@ node_modules/
 docs/
 prop_venv/
 .vscode/
+.byebug_history

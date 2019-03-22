@@ -27,3 +27,7 @@ and I'd love to get it fixed for you!
 I forked [@holmans](https://github.com/holman)'s dotfiles, who forked [Ryan Bates](http://github.com/ryanb)' excellent
 [dotfiles](http://github.com/ryanb/dotfiles). A decent amount of the code in these dotfiles stem or are
 inspired from Ryan's original project.
+
+
+## todo
+add solargraph gem, vs code config
