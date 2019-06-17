@@ -60,3 +60,45 @@ alias pgpg='psql -h localhost -U postgres' # psql -h localhost -U hugo -d myapp_
 alias curl='noglob curl'
 alias todo='vim ~/Dropbox/todo/'
 
+export PATH="/usr/local/opt/elasticsearch@2.4/bin:$PATH"
+
+# extra goodies
+export PATH="/Users/hugo/Developer/bin:$PATH"
+export PATH="$(brew --prefix qt)/bin:$PATH"
+
+# alias to binstubs
+# TODO: make this an array of function calls
+rake() {
+    if [ -f bin/rake ];
+    then
+        bin/rake "$@";
+    else
+        bundle exec rake "$@";
+    fi
+}
+rspec() {
+    if [ -f bin/rspec ];
+    then
+        bin/rspec "$@";
+    else
+        bundle exec rspec "$@";
+    fi
+}
+
+# sins
+function gyolo () {
+  if [ -f ./Gemfile ]; then
+    echo "" >> Gemfile
+  fi
+  git add . ;
+  git commit -m "#yolo push";
+  git push origin master;
+}
+
+# Golang
+export GOPATH=$HOME/Developer/go
+export GOROOT=/usr/local/opt/go/libexec
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin
+
+alias prodc="assh production directory-web rails console"
