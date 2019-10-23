@@ -9,4 +9,5 @@ brew 'youtube-dl'
 brew 'tmux'
 brew 'reattach-to-user-namespace' # for tmux
 brew 'gpg'
+brew 'sshuttle'
 cask 'alacritty'

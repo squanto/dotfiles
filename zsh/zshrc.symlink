@@ -101,4 +101,6 @@ export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 
-alias prodc="assh production directory-web rails console"
+alias prodc="assh production directory-web"
+
+alias flatten_cwd="find ./ -mindepth 2 -type f -exec mv -i '{}' ./ ';'"
