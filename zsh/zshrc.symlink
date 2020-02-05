@@ -85,16 +85,6 @@ rspec() {
     fi
 }
 
-# sins
-function gyolo () {
-  if [ -f ./Gemfile ]; then
-    echo "" >> Gemfile
-  fi
-  git add . ;
-  git commit -m "#yolo push";
-  git push origin master;
-}
-
 # Golang
 export GOPATH=$HOME/Developer/go
 export GOROOT=/usr/local/opt/go/libexec
@@ -104,3 +94,20 @@ export PATH=$PATH:$GOROOT/bin
 alias prodc="assh production directory-web"
 
 alias flatten_cwd="find ./ -mindepth 2 -type f -exec mv -i '{}' ./ ';'"
+
+tail_proc() {
+    tail -f /proc/$@/fd/1
+}
+
+# run slack but disable the new editor
+alias slack="SLACK_DEVELOPER_MENU=true open -a /Applications/Slack.app"
+
+# what did I commit this week?
+alias weekly_recap="git hist --author='Hugo Melo' --since='1 week ago'"
+
+source ~/.zshrc.local
+
+alias youtube-dl-audio='youtube-dl --ignore-errors --output "%(title)s.%(ext)s" --extract-audio --audio-format mp3'
+
+# turns off 2.7 deprecation warnings
+export RUBYOPT='-W:no-deprecated -W:no-experimental'
