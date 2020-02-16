@@ -86,6 +86,10 @@ rspec() {
 }
 
 # Golang
+# $GOPATH/src : Where your Go projects / programs are located
+# $GOPATH/pkg : contains every package objects
+# $GOPATH/bin : The compiled binaries home
+
 export GOPATH=$HOME/Developer/go
 export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOPATH/bin
@@ -111,3 +115,26 @@ alias youtube-dl-audio='youtube-dl --ignore-errors --output "%(title)s.%(ext)s" 
 
 # turns off 2.7 deprecation warnings
 export RUBYOPT='-W:no-deprecated -W:no-experimental'
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+
+export PATH=$PATH:/Users/hugo/Developer/anaconda3/bin
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+#__conda_setup="$('/Users/hugo/Developer/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+#if [ $? -eq 0 ]; then
+    #eval "$__conda_setup"
+#else
+    #if [ -f "/Users/hugo/Developer/anaconda3/etc/profile.d/conda.sh" ]; then
+        #. "/Users/hugo/Developer/anaconda3/etc/profile.d/conda.sh"
+    #else
+        #export PATH="/Users/hugo/Developer/anaconda3/bin:$PATH"
+    #fi
+#fi
+#unset __conda_setup
+# <<< conda initialize <<<
+
