@@ -1,0 +1,8 @@
+ mkdir ~/Library/KeyBindings
+
+~/Library/KeyBindings/DefaultKeyBinding.dict
+{
+    "^@\UF701" = "noop:";
+    "^@\UF702" = "noop:";
+    "^@\UF703" = "noop:";
+}
